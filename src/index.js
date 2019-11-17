@@ -46,6 +46,10 @@ window.netlifyIdentity.on('login', () => {
   document.getElementsByClassName('netlify-identity-user').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
 });
 
+window.netlifyIdentity.on('init', () => {
+  document.getElementsByClassName('netlify-identity-user').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
+});
+
 function clearCanvas() {
   ctx.fillStyle = 'rgb(128, 128, 128)';
   ctx.fillRect(0, 0, canvas.width, canvas.width);
