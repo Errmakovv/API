@@ -44,18 +44,13 @@ activeTool.classList.add('tools__tool_active');
 
 
 window.netlifyIdentity.on('login', () => {
-  console.log('login');
-  console.log(window.netlifyIdentity.currentUser().user_metadata.full_name);
-  console.log(document.getElementsByClassName('netlify-identity-user'));
+  console.log(window.netlifyIdentity.currentUser());
   document.getElementById('user-name').style.display = 'block';
   document.getElementById('user-name').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
 });
 
 window.netlifyIdentity.on('init', () => {
-  console.log('tut');
   if (window.netlifyIdentity.currentUser()) {
-    console.log('init');
-    console.log(window.netlifyIdentity.currentUser().user_metadata.full_name);
     document.getElementById('user-name').style.display = 'block';
     document.getElementById('user-name').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
   }
