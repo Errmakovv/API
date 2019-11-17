@@ -42,6 +42,16 @@ let currentImg = null;
 let activeTool = (localStorage.getItem('active-tool')) ? tools[localStorage.getItem('active-tool')] : tools[2];
 activeTool.classList.add('tools__tool_active');
 
+const anchorTag = document.getElementById('login');
+const outputText = document.getElementById('output');
+anchorTag.addEventListener('click', (e) => {
+  e.preventDefault();
+  const authenticator = new netlify.default({});
+  authenticator.authenticate({ provider: 'github', scope: 'user' }, (err, data) => {
+    err ? outputText.innerText = `Error Authenticating with GitHub: ${err}` : outputText.innerText = `Authenticated with GitHub. Access Token: ${data.token}`;
+  });
+});
+
 function clearCanvas() {
   ctx.fillStyle = 'rgb(128, 128, 128)';
   ctx.fillRect(0, 0, canvas.width, canvas.width);
