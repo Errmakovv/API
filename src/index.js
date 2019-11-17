@@ -47,7 +47,9 @@ window.netlifyIdentity.on('login', () => {
 });
 
 window.netlifyIdentity.on('init', () => {
-  document.getElementsByClassName('netlify-identity-user').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
+  if (window.netlifyIdentity.currentUser()) {
+    document.getElementsByClassName('netlify-identity-user').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
+  }
 });
 
 function clearCanvas() {
