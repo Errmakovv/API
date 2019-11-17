@@ -52,6 +52,25 @@
     border-radius: 4px;
 }
 
+.netlify-identity-logout {
+    display: block;
+    width: 100px;
+    height: 40px;
+    margin-right: 15px;
+    padding-top: 10px;
+    text-decoration: none;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    background-color: dimgrey;
+    color: white;
+    border-radius: 4px;
+}
+
+.netlify-identity-item .netlify-identity-user-details {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+}
+
 .netlify-identity-login {
     display: block;
     width: 100px;
