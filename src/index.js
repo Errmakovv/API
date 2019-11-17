@@ -42,12 +42,15 @@ let currentImg = null;
 let activeTool = (localStorage.getItem('active-tool')) ? tools[localStorage.getItem('active-tool')] : tools[2];
 activeTool.classList.add('tools__tool_active');
 
+
 window.netlifyIdentity.on('login', () => {
   document.getElementsByClassName('netlify-identity-user').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
 });
 
 window.netlifyIdentity.on('init', () => {
   if (window.netlifyIdentity.currentUser()) {
+    console.log(window.netlifyIdentity.currentUser().user_metadata.full_name);
+    console.log(document.getElementsByClassName('netlify-identity-user'));
     document.getElementsByClassName('netlify-identity-user').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
   }
 });
