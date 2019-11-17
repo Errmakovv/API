@@ -44,6 +44,7 @@ activeTool.classList.add('tools__tool_active');
 
 
 window.netlifyIdentity.on('login', () => {
+  console.log(window.netlifyIdentity.currentUser());
   document.getElementById('user-name').style.display = 'block';
   document.getElementById('user-name').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
 });
