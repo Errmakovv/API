@@ -80,10 +80,10 @@
 
 .netlify-identity__user-name {
     display: none;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-right: 10px;
     font-family: "Roboto", sans-serif;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .netlify-identity-login {
