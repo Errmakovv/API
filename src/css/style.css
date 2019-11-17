@@ -66,9 +66,15 @@
     border-radius: 4px;
 }
 
-.netlify-identity-item .netlify-identity-user-details {
+.netlify-identity-user-details {
+    margin-top: 5px;
+    margin-right: 10px;
     font-family: "Roboto", sans-serif;
     font-size: 16px;
+}
+
+.netlify-identity-user {
+    margin-left: 10px;
 }
 
 .netlify-identity-login {
