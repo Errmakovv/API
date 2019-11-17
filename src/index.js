@@ -61,6 +61,10 @@ window.netlifyIdentity.on('init', () => {
   }
 });
 
+window.netlifyIdentity.on('logout', () => {
+  document.getElementById('user-name').style.display = 'none';
+});
+
 function clearCanvas() {
   ctx.fillStyle = 'rgb(128, 128, 128)';
   ctx.fillRect(0, 0, canvas.width, canvas.width);
