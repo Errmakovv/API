@@ -45,7 +45,7 @@ activeTool.classList.add('tools__tool_active');
 window.netlifyIdentity.open();
 const user = window.netlifyIdentity.currentUser();
 window.netlifyIdentity.on('init', () => console.log('init', user));
-window.netlifyIdentity.on('login', () => console.log('login', user));
+window.netlifyIdentity.on('login', () => console.log('login', window.netlifyIdentity.currentUser()));
 
 function clearCanvas() {
   ctx.fillStyle = 'rgb(128, 128, 128)';
