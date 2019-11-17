@@ -44,17 +44,19 @@ activeTool.classList.add('tools__tool_active');
 
 
 window.netlifyIdentity.on('login', () => {
+  console.log('login');
   console.log(window.netlifyIdentity.currentUser().user_metadata.full_name);
   console.log(document.getElementsByClassName('netlify-identity-user'));
-  document.getElementsByClassName('netlify-identity-user').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
+  document.getElementsByClassName('netlify-identity-user').innerText = window.netlifyIdentity.currentUser().user_metadata.full_name;
 });
 
 window.netlifyIdentity.on('init', () => {
   console.log('tut');
   if (window.netlifyIdentity.currentUser()) {
+    console.log('init');
     console.log(window.netlifyIdentity.currentUser().user_metadata.full_name);
     console.log(document.getElementsByClassName('netlify-identity-user'));
-    document.getElementsByClassName('netlify-identity-user').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
+    document.getElementsByClassName('netlify-identity-user').innerText = window.netlifyIdentity.currentUser().user_metadata.full_name;
   }
 });
 
