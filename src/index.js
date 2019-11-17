@@ -42,10 +42,9 @@ let currentImg = null;
 let activeTool = (localStorage.getItem('active-tool')) ? tools[localStorage.getItem('active-tool')] : tools[2];
 activeTool.classList.add('tools__tool_active');
 
-
-const user = window.netlifyIdentity.currentUser();
-window.netlifyIdentity.on('init', () => console.log('init', user));
-window.netlifyIdentity.on('login', () => console.log('login', window.netlifyIdentity.currentUser()));
+window.netlifyIdentity.on('login', () => {
+  document.getElementsByClassName('netlify-identity-user').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
+});
 
 function clearCanvas() {
   ctx.fillStyle = 'rgb(128, 128, 128)';
