@@ -44,21 +44,12 @@ activeTool.classList.add('tools__tool_active');
 
 
 window.netlifyIdentity.on('login', () => {
-
-  let id;
-  const authenticator = new netlify.default({})
-    authenticator.authenticate({ provider: "github", scope: "user" }, (err, data) => {
-      err ? console.log(err) : (() => {
-        id = data.token;
-        fetch('https://api.github.com/user',
-          {
-            headers: { 'Authorization': `token ${id}`, }
-          }).then(data => data.json().then(son => console.log(son)));
-        anchorTag.innerText = 'Logged In';
-        anchorTag.style.backgroundColor = '#32CD32';
-      })();
-    })
-     
+  console.log(window.netlifyIdentity.currentUser());
+  fetch('https://api.github.com/user', {
+    headers: {
+      'Authorization': `token ${window.netlifyIdentity.currentUser().token}`,
+    },
+  }).then(response => console.log(response)); 
   document.getElementById('user-name').style.display = 'block';
   document.getElementById('user-name').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
 });
