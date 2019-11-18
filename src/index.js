@@ -43,19 +43,20 @@ let activeTool = (localStorage.getItem('active-tool')) ? tools[localStorage.getI
 activeTool.classList.add('tools__tool_active');
 
 const anchorTag = document.getElementById('login');
-let id = null;
+let userName = (localStorage.getItem('user-name')) ? localStorage.getItem('user-name') : null;
 
 function auth() {
   const authenticator = new netlify.default({});
   authenticator.authenticate({ provider: 'github', scope: 'user' }, (err, data) => {
-    id = data.token;
     if (err) {
       console.log(err);
     } else {
-      fetch('https://api.github.com/user', { headers: { Authorization: `token ${id}` } })
-        .then((data) => data.json()
+      fetch('https://api.github.com/user', { headers: { Authorization: `token ${data.token}` } })
+        .then((userData) => userData.json()
           .then((user) => {
             anchorTag.innerText = `Logged in as ${user.login}`;
+            localStorage.setItem('user-name', user.login);
+            userName = user.login;
           }));
     }
   });
@@ -63,12 +64,11 @@ function auth() {
 
 anchorTag.addEventListener('click', (e) => {
   e.preventDefault();
-  if (id == null) {
+  if (userName == null) {
     auth();
   } else {
-    id = null;
+    userName = null;
     anchorTag.innerText = 'Log in';
-    anchorTag.style.backgroundColor = '#000000';
   }
 });
 
