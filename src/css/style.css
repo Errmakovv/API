@@ -32,67 +32,12 @@
     font-size: 20px;
 }
 
-.netlify-identity {
-    display: flex;
-}
-
-.netlify-identity-menu {
-    display: flex;
-    margin-top: 5px;
-    list-style-type: none;
-}
-
-.netlify-identity-signup {
-    display: block;
-    width: 100px;
-    height: 40px;
-    margin-right: 15px;
-    padding-top: 10px;
-    text-decoration: none;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    background-color: dimgrey;
-    color: white;
-    border-radius: 4px;
-}
-
-.netlify-identity-logout {
-    display: block;
-    width: 100px;
-    height: 40px;
-    margin-right: 15px;
-    padding-top: 10px;
-    text-decoration: none;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    background-color: dimgrey;
-    color: white;
-    border-radius: 4px;
-}
-
-.netlify-identity-user-details {
-    display: none;
-}
-
 .netlify-identity__user-name {
     display: none;
     margin-top: 10px;
     margin-right: 10px;
     font-family: "Roboto", sans-serif;
     font-size: 20px;
-}
-
-.netlify-identity-login {
-    display: block;
-    width: 100px;
-    height: 40px;
-    padding-top: 10px;
-    text-decoration: none;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    background-color: dimgrey;
-    color: white;
-    border-radius: 4px;
 }
   
 .main {
