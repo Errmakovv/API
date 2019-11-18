@@ -44,7 +44,7 @@ activeTool.classList.add('tools__tool_active');
 
 
 window.netlifyIdentity.on('login', () => {
-  console.log(window.netlifyIdentity.currentUser());
+  console.log(window.netlifyIdentity.currentUser().__proto__.getUserData());
   fetch('https://api.github.com/user', {
     headers: {
       'Authorization': `token ${window.netlifyIdentity.currentUser().token.refresh_token}`,
