@@ -44,12 +44,21 @@ activeTool.classList.add('tools__tool_active');
 
 
 window.netlifyIdentity.on('login', () => {
-  console.log(window.netlifyIdentity.currentUser());
-  fetch('https://api.github.com/user', {
-    headers: {
-      'Authorization': `token ${window.netlifyIdentity.currentUser().token.access_token}`,
-    },
-  }).then(response => console.log(response)); 
+
+  let id;
+  const authenticator = new netlify.default({})
+    authenticator.authenticate({ provider: "github", scope: "user" }, (err, data) => {
+      err ? console.log(err) : (() => {
+        id = data.token;
+        fetch('https://api.github.com/user',
+          {
+            headers: { 'Authorization': `token ${id}`, }
+          }).then(data => data.json().then(son => console.log(son)));
+        anchorTag.innerText = 'Logged In';
+        anchorTag.style.backgroundColor = '#32CD32';
+      })();
+    })
+     
   document.getElementById('user-name').style.display = 'block';
   document.getElementById('user-name').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
 });
@@ -113,6 +122,8 @@ function sizeChanger(newSize) {
   pixelSize = 512 / canvas.width;
   size = newSize;
   sizeSwitcherLabel.innerHTML = `${newSize}&times;${newSize}`;
+  ctx.imageSmoothingEnabled = false;
+  ctx.webkitImageSmoothingEnabled = false;
   currentImg.onload = () => {
     ctx.drawImage(currentImg, 0, 0, canvas.width, canvas.width);
   };
