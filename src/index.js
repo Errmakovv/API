@@ -47,7 +47,7 @@ window.netlifyIdentity.on('login', () => {
   console.log(window.netlifyIdentity.currentUser());
   fetch('https://api.github.com/user', {
     headers: {
-      'Authorization': 'token '+ window.netlifyIdentity.currentUser().token.access_token,
+      'Authorization': 'token '+ window.netlifyIdentity.currentUser().token,
     },
   }).then(response => console.log(response)); 
   document.getElementById('user-name').style.display = 'block';
