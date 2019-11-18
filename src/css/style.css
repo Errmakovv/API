@@ -33,7 +33,7 @@
 }
 
 .netlify-identity__user-name {
-    display: none;
+    display: block;
     margin-top: 10px;
     margin-right: 10px;
     text-decoration: none;
