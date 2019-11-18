@@ -69,6 +69,7 @@ anchorTag.addEventListener('click', (e) => {
     auth();
   } else {
     userName = null;
+    localStorage.removeItem('user-name');
     anchorTag.innerText = 'Log in';
   }
 });
