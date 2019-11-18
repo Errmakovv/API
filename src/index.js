@@ -61,17 +61,6 @@ function auth() {
   });
 }
 
-anchorTag.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (id == null) {
-    auth();
-  } else {
-    id = null;
-    anchorTag.innerText = 'Log in';
-    anchorTag.style.backgroundColor = '#000000';
-  }
-});
-
 function clearCanvas() {
   ctx.fillStyle = 'rgb(128, 128, 128)';
   ctx.fillRect(0, 0, canvas.width, canvas.width);
