@@ -42,28 +42,16 @@ let currentImg = null;
 let activeTool = (localStorage.getItem('active-tool')) ? tools[localStorage.getItem('active-tool')] : tools[2];
 activeTool.classList.add('tools__tool_active');
 
-
-window.netlifyIdentity.on('login', () => {
-  console.log(window.netlifyIdentity.currentUser().__proto__.getUserData());
-  fetch('https://api.github.com/user', {
-    headers: {
-      'Authorization': `token ${window.netlifyIdentity.currentUser().token.refresh_token}`,
-    },
-  }).then(response => console.log(response)); 
-  document.getElementById('user-name').style.display = 'block';
-  document.getElementById('user-name').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
-});
-
-window.netlifyIdentity.on('init', () => {
-  if (window.netlifyIdentity.currentUser()) {
-    document.getElementById('user-name').style.display = 'block';
-    document.getElementById('user-name').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
-  }
-});
-
-window.netlifyIdentity.on('logout', () => {
-  document.getElementById('user-name').style.display = 'none';
-});
+const anchorTag = document.getElementById('login')
+const outputText = document.getElementById('output')
+anchorTag.addEventListener('click', (e) => {
+  e.preventDefault()
+  const authenticator = new netlify.default ({})
+  authenticator.authenticate({provider:"github", scope: "user"}, (err, data) => {
+    err ? outputText.innerText = "Error Authenticating with GitHub: " + err : 
+    outputText.innerText = "Authenticated with GitHub. Access Token: " + data.token
+  })
+})
 
 function clearCanvas() {
   ctx.fillStyle = 'rgb(128, 128, 128)';
