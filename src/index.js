@@ -44,6 +44,7 @@ activeTool.classList.add('tools__tool_active');
 
 const anchorTag = document.getElementById('login');
 let userName = (localStorage.getItem('user-name')) ? localStorage.getItem('user-name') : null;
+anchorTag.innerText = (userName) ? `Logged in as ${userName}` : 'Log in';
 
 function auth() {
   const authenticator = new netlify.default({});
