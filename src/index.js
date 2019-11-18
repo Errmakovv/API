@@ -49,7 +49,7 @@ window.netlifyIdentity.on('login', () => {
     headers: {
       'Authorization': 'token '+ window.netlifyIdentity.currentUser().token.access_token,
     },
-  }).then(response => console.log(response.json())); 
+  }).then(response => console.log(response)); 
   document.getElementById('user-name').style.display = 'block';
   document.getElementById('user-name').innerHTML = window.netlifyIdentity.currentUser().user_metadata.full_name;
 });
